@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   senai1:
-    image: "${REPO_URL}/${REPO_NAME}/${IMAGE_CONTAINERBUILD1_VERSAO}"
+    image: "${REPO_URL}/${REPO_NAME}:${IMAGE_CONTAINERBUILD1_VERSAO}"
     ports:
       - "80:80"
       - "443:443"

@@ -1,7 +1,11 @@
 version: '3.8'
+
 services:
-  senai1:
-    image: "${REPO_URL}/${REPO_NAME}:${IMAGE_CONTAINERBUILD1_VERSAO}"
+  senai1_lab04:
+    hostname: ${IMAGE_CONTAINERBUILD1}
+    container_name: ${IMAGE_CONTAINERBUILD1}
+    image: teste:0.0.6
+    #image: "${REPO_URL}/${REPO_NAME}:${IMAGE_CONTAINERBUILD1_VERSAO}"
     ports:
       - "80:80"
       - "443:443"
@@ -12,3 +16,13 @@ services:
       IMAGE_CONTAINERBUILD1_CERT: ${IMAGE_CONTAINERBUILD1_CERT}
       IMAGE_CONTAINERBUILD1_CERTKEY: ${IMAGE_CONTAINERBUILD1_CERTKEY}
       IMAGE_CONTAINERBUILD1_CERTDIR: ${IMAGE_CONTAINERBUILD1_CERTDIR}
+    dns:
+      - ${NETWORK_DNS}
+    networks:
+      - internal
+    restart: unless-stopped
+    #restart: always
+
+networks:
+   internal:
+     driver: bridge
